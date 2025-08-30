@@ -1,0 +1,96 @@
+/* Angular Material Theme */
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #fafafa;
+  color: #333;
+  line-height: 1.6;
+}
+
+.mat-mdc-card {
+  margin-bottom: 16px;
+}
+
+.mat-mdc-table {
+  box-shadow: none;
+}
+
+.mat-mdc-row:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+/* Custom utility classes */
+.full-width {
+  width: 100%;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.mt-16 {
+  margin-top: 16px;
+}
+
+.mb-16 {
+  margin-bottom: 16px;
+}
+
+/* PWA specific styles */
+.pwa-prompt {
+  position: fixed;
+  bottom: 16px;
+  left: 16px;
+  right: 16px;
+  z-index: 1000;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .mat-mdc-table {
+    font-size: 12px;
+  }
+  
+  .mat-mdc-header-cell,
+  .mat-mdc-cell {
+    padding: 8px 4px;
+  }
+}
+
+/* Loading animation */
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+/* Error styles */
+.error-message {
+  color: #f44336;
+  background-color: #ffebee;
+  padding: 16px;
+  border-radius: 4px;
+  margin: 16px 0;
+  text-align: center;
+}
+
+/* Success styles */
+.success-message {
+  color: #4caf50;
+  background-color: #e8f5e8;
+  padding: 16px;
+  border-radius: 4px;
+  margin: 16px 0;
+  text-align: center;
+}
