@@ -8,12 +8,7 @@ import { ZerodhaCredentials, Holding, MarketOrderRequest, Trade } from '../model
   providedIn: 'root'
 })
 export class ZerodhaService {
-  private get baseUrl(): string {
-    const credentials = this.getCredentials();
-    return credentials?.ipAddress 
-      ? `http://${credentials.ipAddress}:3001`
-      : environment.apiBaseUrl;
-  }
+  private baseUrl = `http://${window.location.hostname}:3001`;
 
   private credentialsSubject = new BehaviorSubject<ZerodhaCredentials | null>(this.getStoredCredentials());
 
@@ -28,8 +23,8 @@ export class ZerodhaService {
     });
   }
 
-  storeCredentials(apiKey: string, accessToken: string, ipAddress: string): void {
-    const credentials: ZerodhaCredentials = { apiKey, accessToken, ipAddress };
+  storeCredentials(apiKey: string, accessToken: string): void {
+    const credentials: ZerodhaCredentials = { apiKey, accessToken };
     localStorage.setItem('zerodhaCredentials', JSON.stringify(credentials));
     this.credentialsSubject.next(credentials);
   }

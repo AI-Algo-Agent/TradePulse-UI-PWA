@@ -24,7 +24,6 @@ export interface Holding {
 export interface ZerodhaCredentials {
   apiKey: string;
   accessToken: string;
-  ipAddress: string;
 }
 
 export interface MarketOrderRequest {

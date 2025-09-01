@@ -49,14 +49,6 @@ import { ZerodhaService } from '../../services/zerodha.service';
             </mat-error>
           </mat-form-field>
 
-          <mat-form-field appearance="outline" class="full-width">
-            <mat-label>IP Address</mat-label>
-            <input matInput formControlName="ipAddress" placeholder="Enter server IP address">
-            <mat-error *ngIf="authForm.get('ipAddress')?.hasError('required')">
-              IP Address is required
-            </mat-error>
-          </mat-form-field>
-
 
           <div class="button-container">
             <button mat-raised-button color="primary" type="submit" 
@@ -110,8 +102,7 @@ export class AuthFormComponent {
     this.authForm = this.fb.group({
       apiKey: ['', Validators.required],
       apiSecret: ['', Validators.required],
-      requestToken: ['', Validators.required],
-      ipAddress: ['', Validators.required]
+      requestToken: ['', Validators.required]
     });
   }
 
@@ -120,12 +111,12 @@ export class AuthFormComponent {
       this.isLoading = true;
       this.error = '';
 
-      const { apiKey, apiSecret, requestToken, ipAddress } = this.authForm.value;
+      const { apiKey, apiSecret, requestToken } = this.authForm.value;
 
       this.zerodhaService.authenticateWithRefreshToken(apiKey, apiSecret, requestToken)
         .subscribe({
           next: (response) => {
-            this.zerodhaService.storeCredentials(apiKey, response.data.access_token, ipAddress);
+            this.zerodhaService.storeCredentials(apiKey, response.data.access_token);
             this.authenticated.emit();
             this.isLoading = false;
           },
